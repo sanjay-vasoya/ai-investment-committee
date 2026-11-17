@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Investment Committee</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <header class="brand">
+        <h1>AI Investment<br />Committee</h1>
+        <p class="tagline">Multi-agent research desk</p>
+      </header>
+
+      <section class="panel">
+        <h2>New analysis</h2>
+        <form id="analyze-form">
+          <input id="tickers-input" type="text" placeholder="NVDA, CRWD" autocomplete="off"
+                 spellcheck="false" />
+          <label class="checkbox">
+            <input id="use-portfolio" type="checkbox" checked />
+            <span>Include portfolio review</span>
+          </label>
+          <label class="checkbox">
+            <input id="use-sa" type="checkbox" checked />
+            <span>Use Seeking Alpha data</span>
+          </label>
+          <button id="run-btn" type="submit">Convene committee</button>
+        </form>
+        <p id="portfolio-hint" class="hint"></p>
+      </section>
+
+      <section class="panel">
+        <h2>Seeking Alpha data</h2>
+        <p id="sa-status" class="hint">No data uploaded.</p>
+        <label class="upload-btn">
+          Upload xlsx export
+          <input id="sa-file" type="file" accept=".xlsx" hidden />
+        </label>
+        <p id="sa-upload-msg" class="hint"></p>
+      </section>
+
+      <section class="panel grow">
+        <h2>Reports</h2>
+        <ul id="report-list" class="report-list">
+          <li class="empty">No reports yet</li>
+        </ul>
+      </section>
+
+      <nav class="footer-nav">
+        <button id="portfolio-btn" class="link-btn">Portfolio</button>
+        <button id="journal-btn" class="link-btn">Decision journal</button>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div id="disclaimer" class="disclaimer"></div>
+
+      <section id="run-panel" class="card hidden">
+        <div class="card-head">
+          <h2 id="run-title">Committee in session</h2>
+          <span id="run-status" class="badge badge-running">running</span>
+        </div>
+        <pre id="run-log" class="run-log"></pre>
+      </section>
+
+      <section id="content" class="card">
+        <div id="welcome">
+          <h2>Welcome</h2>
+          <p>Enter one or more tickers on the left to convene the committee.
+             Five specialist agents (quant, business, risk, options, portfolio)
+             research the name with live market data, and the Chair issues a
+             conviction-scored verdict.</p>
+          <p>Each ticker takes a few minutes and makes ~6 Claude Opus calls.
+             Past reports appear in the sidebar.</p>
+        </div>
+        <article id="report-view" class="report hidden"></article>
+        <div id="portfolio-view" class="hidden">
+          <h2>Portfolio</h2>
+          <p id="portfolio-meta" class="hint-dark"></p>
+          <div id="verdict-chips" class="chips"></div>
+          <table class="journal-table">
+            <thead>
+              <tr><th>Ticker</th><th>Type</th><th>Qty</th><th>Cost basis</th>
+                  <th>SA Quant</th><th>Verdict</th><th>Rationale</th><th>Reviewed</th></tr>
+            </thead>
+            <tbody id="portfolio-body"></tbody>
+          </table>
+        </div>
+        <div id="journal-view" class="hidden">
+          <h2>Decision journal</h2>
+          <table class="journal-table">
+            <thead>
+              <tr><th>Date</th><th>Ticker</th><th>Decision</th><th>Conviction</th>
+                  <th>Confidence</th><th>Report</th></tr>
+            </thead>
+            <tbody id="journal-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

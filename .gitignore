@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+data/portfolio.json
+data/journal.jsonl
+data/seeking_alpha/
+reports/
+.claude/settings.local.json
+.DS_Store

@@ -1,0 +1,17 @@
+{
+  "currency": "USD",
+  "cash": 5000,
+  "positions": [
+    { "ticker": "AAPL", "shares": 10, "cost_basis_per_share": 165.0 },
+    { "ticker": "NVDA", "shares": 8, "cost_basis_per_share": 92.5 },
+    {
+      "ticker": "SOFI",
+      "type": "leaps_call",
+      "contracts": 2,
+      "strike": 10.0,
+      "expiration": "2027-01-15",
+      "cost_basis_per_contract": 310.0
+    }
+  ],
+  "notes": "Taxable brokerage. Max 10 positions, max 20% per stock, max 40% per sector."
+}
